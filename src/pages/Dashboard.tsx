@@ -46,7 +46,7 @@ export function Dashboard() {
 
     const [openModel, setOpenModel] = useState(false);
     const content = useContent();
-    console.log(content)
+
     return (
         <div >
             <div>
