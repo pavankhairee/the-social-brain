@@ -46,7 +46,7 @@ export function Dashboard() {
 
     const [openModel, setOpenModel] = useState(false);
     const content = useContent();
-    console.log()
+    console.log(content)
     return (
         <div >
             <div>
@@ -67,7 +67,7 @@ export function Dashboard() {
                 </div>
 
                 <div className='flex-wrap flex gap-4 pt-2'>
-                    {content.map(({ title, type, link }) => <Card type={type} title={title} link={link} />)}
+                    {content.map(({ title, type, link, _id }) => <Card type={type} title={title} link={link} contentId={_id} />)}
                 </div>
             </div>
         </div>

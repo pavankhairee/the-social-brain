@@ -6,15 +6,16 @@ import { BACKEND_URL } from "../config";
 import { InstagramEmbed, PinterestEmbed, XEmbed, YouTubeEmbed } from "react-social-media-embed";
 
 export interface CardProps {
+    contentId: string,
     title: string;
     link: string;
     type: "twitter" | "youtube" | "instagram" | "facebook" | "pinterest" | "linkedin";
 }
 
 
-export function Card({ title, link, type }: CardProps) {
-    async function onDelete() {
-        const response = await axios.delete(`${BACKEND_URL}/api/content/delete`, {
+export function Card({ title, link, type, contentId }: CardProps) {
+    async function onDelete(id: string) {
+        const response = await axios.delete(`${BACKEND_URL}/api/content/delete${contentId}`, {
             headers: {
                 "Authorization": localStorage.getItem("token")
             }
@@ -34,7 +35,7 @@ export function Card({ title, link, type }: CardProps) {
                     <div className="pr-2 text-gray-500 cursor-pointer" >
                         <ShareIcon size="md" />
                     </div>
-                    <div onClick={onDelete} className="text-gray-500 cursor-pointer"><DeleteIcon size="md" /></div>
+                    <div onClick={() => onDelete(contentId)} className="text-gray-500 cursor-pointer"><DeleteIcon size="md" /></div>
                 </div>
             </div>
 
