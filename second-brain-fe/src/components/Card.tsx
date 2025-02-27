@@ -3,7 +3,8 @@ import { DeleteIcon } from "../Icons/Deleteicon";
 import { DocumentIcon } from "../Icons/DocumentIcon";
 import { ShareIcon } from "../Icons/PlusIcon";
 import { BACKEND_URL } from "../config";
-import { InstagramEmbed, LinkedInEmbed, PinterestEmbed, XEmbed, YouTubeEmbed } from "react-social-media-embed";
+import { InstagramEmbed, PinterestEmbed, XEmbed, YouTubeEmbed } from "react-social-media-embed";
+import { LinkIcon } from "../Icons/LinkIcon";
 
 export interface CardProps {
     contentId: string,
@@ -45,9 +46,9 @@ export function Card({ title, link, type, contentId }: CardProps) {
                 {type === "youtube" && <YouTubeEmbed url={link} width={300} height={220}></YouTubeEmbed>}
                 {type === "twitter" && <XEmbed url={link} width={250} height={250}></XEmbed>}
                 {type === "pinterest" && <PinterestEmbed url={link} width={250} height={250}></PinterestEmbed>}
-                {type === "instagram" && <InstagramEmbed url={link} width={328} height={350} ></ InstagramEmbed>}
-                {type === "links" && (<a className="inline-block w-48 h-12 text-center leading-[3rem] bg-gray-300 hover:bg-gray-400 rounded-lg"
-                    href={link} target="_blank">Random Link</a>)}
+                {type === "instagram" && <InstagramEmbed url={link} width={280} height={250} ></ InstagramEmbed>}
+                {type === "links" && (<a className="inline-grid justify-center pt-5 w-63 h-62.5 text-center leading-[3rem] bg-gray-300 hover:bg-gray-400 rounded-lg"
+                    href={link} target="_blank">{title}<LinkIcon size="img"></LinkIcon></a>)}
 
             </div>
         </div>

@@ -45,11 +45,10 @@ export function CreateContentModel({ open, onClose }) {
                         </div>
 
                     </div>
-                    <div>
+                    <div className="flex justify-between">
                         <Input refInput={titleRef} placeholder={"Title"} />
                         <Input refInput={linkRef} placeholder={"Link"} />
                     </div>
-                    <h1>Types</h1>
                     <div className="flex gap-2 p-4">
                         <Button text="YouTube" size="md" variant={type == ContentType.YouTube ? 'primary' : 'secondary'} onClick={() => {
                             setType(ContentType.YouTube)

@@ -7,9 +7,6 @@ import { Card } from "../components/Card"
 import { useContent } from "../hooks/useContent"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
-import { LinkedInEmbed } from "react-social-media-embed"
-import { LinkIcon } from "../Icons/LinkIcon"
-import { CrossIcon } from "../Icons/CrossIcon"
 
 
 export function Dashboard() {
@@ -54,7 +51,7 @@ export function Dashboard() {
             <div>
                 <SideBar />
             </div>
-            <div className='p-4 ml-50 min-h-screen bg-gray-200'>
+            <div className={`p-4 ml-50 min-h-screen bg-gray-200 transition-opacity duration-300 `}>
                 <CreateContentModel open={openModel} onClose={() => { setOpenModel(false) }} />
 
                 <div className='flex justify-between'>
@@ -70,9 +67,8 @@ export function Dashboard() {
                     </div>
                 </div>
 
-                <div className='flex-wrap flex gap-4 pt-2'>
+                <div className={`flex-wrap flex gap-4 pt-2 ${openModel ? "opacity-0 pointer-events-none" : "opacity-100"}`} >
                     {content.map(({ title, type, link, _id }) => <Card type={type} title={title} link={link} contentId={_id} />)}
-
 
                 </div>
             </div>

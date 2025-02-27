@@ -33,8 +33,6 @@ export function HomePage() {
             <YouTubeColor />
             <InstaIcon />
             <PinterestIcon />
-            <LinkdenIcon />
-
         </div>
     </div>
 }

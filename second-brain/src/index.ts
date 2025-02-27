@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import { Request, Response } from "express"
 import bcrypt from "bcrypt";
-import z, { boolean } from "zod";
+import { z } from "zod";
 import cors from "cors"
 import { ContentModel, LinkModel, UserModel } from "./db";
 import jwt from "jsonwebtoken"
