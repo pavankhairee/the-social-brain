@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 
 export interface ButtonProps {
     variant: "primary" | "secondary";
@@ -8,6 +8,8 @@ export interface ButtonProps {
     endIcon: ReactElement;
     onClick?: () => void;
     fullWidth?: boolean;
+    showCopiedText?: boolean;
+    showText: string;
 }
 
 const variantStyle = {
@@ -20,11 +22,32 @@ const sizeStyle = {
     "md": "py-2 px-4",
     "lg": "py-4 px-6"
 }
+
 const defaultStyle = "rounded-md flex font-thin items-center cursor-pointer"
 
 export const Button = (props: ButtonProps) => {
-    return <button onClick={props.onClick} className={` ${variantStyle[props.variant]} ${props.fullWidth ? 'w-full flex justify-center items-center' : ''}  ${defaultStyle} ${sizeStyle[props.size]}`}>
-        <div className="pr-2">{props.startIcon} </div>{props.text}</button>
+
+    {
+        const [copied, setCopied] = useState(false);
+        const handleClick = () => {
+            if (props.onClick) props.onClick();
+            if (props.showCopiedText) {
+                setCopied(true); // Hide after 2 seconds
+                setTimeout(() => setCopied(false), 1000);
+            }
+        };
+
+
+        return <div className="relative inline-block">  <button onClick={handleClick}
+            className={` ${variantStyle[props.variant]} ${props.fullWidth ? 'w-full flex justify-center items-center' : ''}  ${defaultStyle} ${sizeStyle[props.size]}`}>
+            <div className="pr-2">{props.startIcon}</div>{props.text}</button>
+            {copied && (
+                <div className="absolute top-10 left-5  bg-gray-800 text-white text-sm  px-3 py-1 rounded-md shadow-lg mt-1">
+                    {props.showText}
+                </div>
+            )}
+        </div>
+    }
 }
 
-//<Button variant="primary" size="lg" text="asbd" startIcon="+" endIcon="-" onClick={() => { }} ></Button>
+//<Button variant="primary" size="lg" text="asbd" startIcon="+" endIcon="-" onClick={() => { }} ></Button> 

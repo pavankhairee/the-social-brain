@@ -7,26 +7,27 @@ import { Card } from "../components/Card"
 import { useContent } from "../hooks/useContent"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
+import { DeleteIcon } from "../Icons/Deleteicon"
 
 
 export function Dashboard() {
     async function onShare() {
 
-        const reponse = await axios.post(`${BACKEND_URL}/api/brain/share`, {
+        const response = await axios.post(`${BACKEND_URL}/api/brain/share`, {
             share: true
         }, {
             headers: {
                 "Authorization": localStorage.getItem("token")
             }
         })
-        const sharehash = `${reponse.data.hash}`
+        const sharehash = `${response.data.hash}`
 
         await navigator.clipboard.writeText(`${window.location.origin}/api/brain/${sharehash}`);
+
 
     }
 
     async function onDelete() {
-        alert("Content is delete")
         const response = await axios.delete(`${BACKEND_URL}/api/content/deleteall`, {
             headers: {
                 "Authorization": localStorage.getItem("token")
@@ -55,13 +56,13 @@ export function Dashboard() {
                 <CreateContentModel open={openModel} onClose={() => { setOpenModel(false) }} />
 
                 <div className='flex justify-between'>
-                    <div className="text-2xl font-bold">All Notes</div>
-                    <div className="flex gap-4">
+                    <div className="text-2xl font-bold">Social Board</div>
+                    <div className="flex gap-4 ">
 
                         <Button variant="secondary" onClick={() => { setOpenModel(true) }} startIcon={<AddIcons size='lg' />} size="md" text='Add Content'></Button>
-                        <Button variant="secondary" onClick={onDelete} size="md" text="Delete" ></Button>
-                        <Button variant="primary" startIcon={<ShareIcon size="md" />} size="md" text='Share Brain'
-                            onClick={onShare}
+                        <Button variant="secondary" startIcon={<DeleteIcon size="lg" />} showCopiedText={true} showText="Delete All" onClick={onDelete} size="md" text="Delete" ></Button>
+                        <Button variant="primary" showCopiedText={true} startIcon={<ShareIcon size="md" />} size="md" text='Share Brain'
+                            onClick={onShare} showText="Copied Link"
                         ></Button>
 
                     </div>

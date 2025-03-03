@@ -36,9 +36,9 @@ export function CreateContentModel({ open, onClose }) {
     }
 
     return <div>
-        {open && <div className="h-screen w-screen opacity-100 top-0 left-0 fixed bg-gray-800 flex justify-center">
+        {open && <div className="h-screen w-screen opacity-100 top-0 left-0 fixed  flex justify-center">
             <div className="justify-center flex flex-col" >
-                <span className="bg-white  backdrop-opacity-100  p-4 rounded">
+                <span className="bg-white border-2  backdrop-opacity-100  p-4 rounded">
                     <div className="flex justify-end" >
                         <div className="cursor-pointer" onClick={onClose}>
                             <CrossIcon />
