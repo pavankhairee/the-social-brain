@@ -8,12 +8,17 @@ import jwt from "jsonwebtoken"
 import { JWT_CODE } from "./config";
 import { userMiddleware } from "./middleware";
 import { random } from "./utils";
+import mongoose from "mongoose";
 
 const app = express();
 app.use(express.json())
 app.use(cors());
 
-
+async function data() {
+    const content = await ContentModel.find({ type: "youtube", UserId: "67c889f2f4a0df90b1bbf2be" });
+    console.log("Fetched Content:", content);
+}
+data()
 app.post('/api/signup', async (req, res) => {
 
     const reqBodyval = z.object({
@@ -112,6 +117,21 @@ app.get('/api/content', userMiddleware, async (req, res) => {
 
 })
 
+app.get('/api/content/youtube', userMiddleware, async (req, res) => {
+
+    const type = "youtube";
+    //@ts-ignore
+    const UserId = req.UserId;
+    const content = await ContentModel.find({
+        type: type,
+        UserId: UserId
+    }).populate("UserId", "username")
+    res.json({
+        content
+    })
+})
+
+
 app.delete('/api/content/deleteall', userMiddleware, async (req, res) => {
 
     const contentId = req.body.contentId;
@@ -204,3 +224,7 @@ app.get('/api/brain/:shareLink', async (req, res) => {
 
 
 app.listen(3000)
+function UserId(arg0: string): unknown {
+    throw new Error("Function not implemented.");
+}
+

@@ -6,7 +6,7 @@ import { Input } from "./Input";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 
-enum ContentType {
+export enum ContentType {
     YouTube = "youtube",
     Twitter = "twitter",
     Pinterest = "pinterest",

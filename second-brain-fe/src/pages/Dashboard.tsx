@@ -11,6 +11,7 @@ import { DeleteIcon } from "../Icons/Deleteicon"
 
 
 export function Dashboard() {
+
     async function onShare() {
 
         const response = await axios.post(`${BACKEND_URL}/api/brain/share`, {
@@ -45,12 +46,13 @@ export function Dashboard() {
     }
 
     const [openModel, setOpenModel] = useState(false);
+    const [selectedType, setSelectedType] = useState(null);
     const content = useContent();
 
     return (
         <div >
             <div>
-                <SideBar />
+                <SideBar onSelectType={setSelectedType} />
             </div>
             <div className={`p-4 ml-50 min-h-screen bg-gray-200 transition-opacity duration-300 `}>
                 <CreateContentModel open={openModel} onClose={() => { setOpenModel(false) }} />
@@ -68,9 +70,16 @@ export function Dashboard() {
                     </div>
                 </div>
 
-                <div className={`flex-wrap flex gap-4 pt-2 ${openModel ? "opacity-0 pointer-events-none" : "opacity-100"}`} >
-                    {content.map(({ title, type, link, _id }) => <Card type={type} title={title} link={link} contentId={_id} />)}
-
+                <div className={`flex-wrap flex gap-4 pt-2 ${openModel ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+                    {content.filter(({ type }) => !selectedType || type === selectedType).length > 0 ? (
+                        content
+                            .filter(({ type }) => !selectedType || type === selectedType)
+                            .map(({ title, type, link, _id }) => (
+                                <Card key={_id} type={type} title={title} link={link} contentId={_id} />
+                            ))
+                    ) : (
+                        <div className="text-gray-500 text-lg w-full text-center mt-4">No posts available</div>
+                    )}
                 </div>
             </div>
         </div>
