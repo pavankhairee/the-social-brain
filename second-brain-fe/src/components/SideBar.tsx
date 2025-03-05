@@ -6,6 +6,7 @@ import { SideBarItems } from "./SidebarItem";
 import { PinterestIcon } from "../Icons/Pinterest";
 import { InstaIcon } from "../Icons/Instagram";
 import { LinkIcon, LinkIconColor } from "../Icons/LinkIcon";
+import { Stack } from "../Icons/Stack";
 
 interface SideBarProps {
     onSelectType: (type: string | null) => void; // ✅ Define prop type
@@ -17,7 +18,7 @@ export function SideBar({ onSelectType }: SideBarProps) {
     return <div className="h-screen bg-white border-r w-50 fixed left-0 top-0 pl-6 ">
         <div className="flex text-2xl pt-4 items-center">
             <div className="pr-2"><AcdLogo /></div>Social Brain</div>
-
+        <div onClick={() => onSelectType(null)}><SideBarItems icons={<Stack />} text={"AllPost"} /></div>
         <div onClick={() => onSelectType("twitter")} ><SideBarItems icons={<TwitterColor />} text={"Tweets"} /></div>
         <div onClick={() => onSelectType("youtube")}><SideBarItems icons={<YouTubeColor />} text={"YouTube"} /></div>
         <div onClick={() => onSelectType("pinterest")} ><SideBarItems icons={<PinterestIcon />} text={"Pinterest"} /></div>
