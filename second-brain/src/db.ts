@@ -8,6 +8,9 @@ async function connect() {
 }
 
 connect();
+
+
+
 const UserSchema = new Schema({
     username: { type: String, unique: true },
     password: String

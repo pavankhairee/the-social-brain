@@ -8,6 +8,7 @@ import { useContent } from "../hooks/useContent"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
 import { DeleteIcon } from "../Icons/Deleteicon"
+import { SearchBar } from "../components/SearchBar"
 
 
 export function Dashboard() {
@@ -57,16 +58,15 @@ export function Dashboard() {
             <div className={`p-4 ml-50 min-h-screen bg-gray-200 transition-opacity duration-300 `}>
                 <CreateContentModel open={openModel} onClose={() => { setOpenModel(false) }} />
 
-                <div className='flex justify-between'>
+                <div className='flex justify-between '>
                     <div className="text-2xl font-bold">Social Board</div>
-                    <div className="flex gap-4 ">
-
+                    <div className="flex gap-4 justify-self-center">
+                        <SearchBar />
                         <Button variant="secondary" onClick={() => { setOpenModel(true) }} startIcon={<AddIcons size='lg' />} size="md" text='Add Content'></Button>
                         <Button variant="secondary" startIcon={<DeleteIcon size="lg" />} showCopiedText={true} showText="Delete All" onClick={onDelete} size="md" text="Delete" ></Button>
                         <Button variant="primary" showCopiedText={true} startIcon={<ShareIcon size="md" />} size="md" text='Share Brain'
                             onClick={onShare} showText="Copied Link"
                         ></Button>
-
                     </div>
                 </div>
 

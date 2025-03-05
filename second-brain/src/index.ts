@@ -117,19 +117,19 @@ app.get('/api/content', userMiddleware, async (req, res) => {
 
 })
 
-app.get('/api/content/youtube', userMiddleware, async (req, res) => {
+// app.get('/api/content/youtube', userMiddleware, async (req, res) => {
 
-    const type = "youtube";
-    //@ts-ignore
-    const UserId = req.UserId;
-    const content = await ContentModel.find({
-        type: type,
-        UserId: UserId
-    }).populate("UserId", "username")
-    res.json({
-        content
-    })
-})
+//     const type = "youtube";
+//     //@ts-ignore
+//     const UserId = req.UserId;
+//     const content = await ContentModel.find({
+//         type: type,
+//         UserId: UserId
+//     }).populate("UserId", "username")
+//     res.json({
+//         content
+//     })
+// })
 
 
 app.delete('/api/content/deleteall', userMiddleware, async (req, res) => {

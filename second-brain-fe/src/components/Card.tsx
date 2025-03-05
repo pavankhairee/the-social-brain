@@ -26,13 +26,13 @@ export function Card({ title, link, type, contentId }: CardProps) {
 
     return <>
 
-        <div className="p-4 gap-4  rounded-md bg-white shadow-md outline-slate-400 max-w-80 border-gray-200 border">
-            <div className="flex justify-between max-w-72 ">
+        <div className="p-4 gap-4 rounded-md bg-white shadow-md outline-slate-400  border-gray-200 border">
+            <div className="flex justify-between max ">
                 <div className="flex items-center text-md font-bold">
                     <div className="pr-2"> <DocumentIcon size="md" /></div>
                     {title}
                 </div>
-                <div className="flex items-center ">
+                <div className="flex items-center">
                     <div className="pr-2 text-gray-500 cursor-pointer" >
                         <ShareIcon size="md" />
                     </div>
@@ -43,10 +43,10 @@ export function Card({ title, link, type, contentId }: CardProps) {
             <div className="pt-2">
                 {/* {type == "youtube" && <iframe className="w-full" src={link.replace("watch", "embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>} */}
 
-                {type === "youtube" && <YouTubeEmbed url={link} width={300} height={220}></YouTubeEmbed>}
+                {type === "youtube" && <YouTubeEmbed url={link} width={300} height={250}></YouTubeEmbed>}
                 {type === "twitter" && <XEmbed url={link} width={250} height={250}></XEmbed>}
                 {type === "pinterest" && <PinterestEmbed url={link} width={250} height={250}></PinterestEmbed>}
-                {type === "instagram" && <InstagramEmbed url={link} width={280} height={250} ></ InstagramEmbed>}
+                {type === "instagram" && <InstagramEmbed url={link} width={350} height={400} ></ InstagramEmbed>}
                 {type === "links" && (<a className="inline-grid justify-center pt-5 w-63 h-62.5 text-center leading-[3rem] bg-gray-300 hover:bg-gray-400 rounded-lg"
                     href={link} target="_blank">{title}<LinkIcon size="img"></LinkIcon></a>)}
 
