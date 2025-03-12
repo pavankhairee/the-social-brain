@@ -30,6 +30,7 @@ export function Signin() {
         <div className="bg-white rounded border min-w-48 p-10 rounded-2xl">
 
             <Input refInput={usernameRef} placeholder="Username" />
+
             <Input refInput={passwordRef} placeholder="Password" />
 
             <div className="flex justify-center rounded"><Button onClick={signin} fullWidth={true} size="md" variant="primary" text="SignIn" /></div>

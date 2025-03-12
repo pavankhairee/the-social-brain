@@ -11,7 +11,8 @@ export enum ContentType {
     Twitter = "twitter",
     Pinterest = "pinterest",
     Instagram = "instagram",
-    Link = "links"
+    Link = "links",
+    Spotify = "spotify"
 }
 
 export function CreateContentModel({ open, onClose }) {
@@ -65,7 +66,10 @@ export function CreateContentModel({ open, onClose }) {
                         <Button text="Link" size="md" variant={type == ContentType.Link ? 'primary' : 'secondary'} onClick={() => {
                             setType(ContentType.Link)
                         }}></Button>
+                        <Button text="Spotify" size="md" variant={type == ContentType.Spotify ? 'primary' : 'secondary'} onClick={() => {
+                            setType(ContentType.Spotify)
 
+                        }}></Button>
                     </div>
                     <div className="flex justify-center" onClick={onClose}>
                         <Button size="md" variant="primary" onClick={addContent} text="Submit"></Button>

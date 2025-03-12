@@ -8,17 +8,11 @@ import jwt from "jsonwebtoken"
 import { JWT_CODE } from "./config";
 import { userMiddleware } from "./middleware";
 import { random } from "./utils";
-import mongoose from "mongoose";
 
 const app = express();
 app.use(express.json())
 app.use(cors());
 
-async function data() {
-    const content = await ContentModel.find({ type: "youtube", UserId: "67c889f2f4a0df90b1bbf2be" });
-    console.log("Fetched Content:", content);
-}
-data()
 app.post('/api/signup', async (req, res) => {
 
     const reqBodyval = z.object({

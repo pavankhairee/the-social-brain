@@ -80,6 +80,7 @@ export function Dashboard() {
                     ) : (
                         <div className="text-gray-500 text-lg w-full text-center mt-4">No posts available</div>
                     )}
+
                 </div>
             </div>
         </div>

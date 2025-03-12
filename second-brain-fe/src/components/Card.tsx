@@ -10,7 +10,7 @@ export interface CardProps {
     contentId: string,
     title: string;
     link: string;
-    type: "twitter" | "youtube" | "instagram" | "facebook" | "pinterest" | "links";
+    type: "twitter" | "youtube" | "instagram" | "facebook" | "pinterest" | "spotify" | "links";
 }
 
 
@@ -26,8 +26,8 @@ export function Card({ title, link, type, contentId }: CardProps) {
 
     return <>
 
-        <div className="p-4 gap-4 rounded-md bg-white shadow-md outline-slate-400  border-gray-200 border">
-            <div className="flex justify-between max ">
+        <div className="p-4 gap-4 rounded-md w-fit h-fit bg-white shadow-md outline-slate-400  border-gray-200 border">
+            <div className="flex justify-between  max">
                 <div className="flex items-center text-md font-bold">
                     <div className="pr-2"> <DocumentIcon size="md" /></div>
                     {title}
@@ -40,8 +40,7 @@ export function Card({ title, link, type, contentId }: CardProps) {
                 </div>
             </div>
 
-            <div className="pt-2">
-                {/* {type == "youtube" && <iframe className="w-full" src={link.replace("watch", "embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>} */}
+            <div className="pt-2 ">
 
                 {type === "youtube" && <YouTubeEmbed url={link} width={300} height={250}></YouTubeEmbed>}
                 {type === "twitter" && <XEmbed url={link} width={250} height={250}></XEmbed>}
@@ -49,8 +48,10 @@ export function Card({ title, link, type, contentId }: CardProps) {
                 {type === "instagram" && <InstagramEmbed url={link} width={350} height={400} ></ InstagramEmbed>}
                 {type === "links" && (<a className="inline-grid justify-center pt-5 w-63 h-62.5 text-center leading-[3rem] bg-gray-300 hover:bg-gray-400 rounded-lg"
                     href={link} target="_blank">{title}<LinkIcon size="img"></LinkIcon></a>)}
+                {type === "spotify" && <iframe src={link.replace('spotify.com/', 'spotify.com/embed/').split('?')[0]} width={300} height={380}></iframe>}
 
             </div>
-        </div>
+
+        </div >
     </>
 }
