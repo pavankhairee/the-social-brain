@@ -7,9 +7,10 @@ import { PinterestIcon } from "../Icons/Pinterest";
 import { InstaIcon } from "../Icons/Instagram";
 import { LinkIcon, LinkIconColor } from "../Icons/LinkIcon";
 import { Stack } from "../Icons/Stack";
+import { Spotify } from "../Icons/Spotify";
 
 interface SideBarProps {
-    onSelectType: (type: string | null) => void; // ✅ Define prop type
+    onSelectType: (type: string | null) => void;
 }
 
 
@@ -23,7 +24,7 @@ export function SideBar({ onSelectType }: SideBarProps) {
         <div onClick={() => onSelectType("youtube")}><SideBarItems icons={<YouTubeColor />} text={"YouTube"} /></div>
         <div onClick={() => onSelectType("pinterest")} ><SideBarItems icons={<PinterestIcon />} text={"Pinterest"} /></div>
         <div onClick={() => onSelectType("instagram")}><SideBarItems icons={<InstaIcon />} text={"Instagram"} /></div>
+        <div onClick={() => onSelectType("spotify")}><SideBarItems icons={<Spotify />} text={"Spotify"} /></div>
         <div onClick={() => onSelectType("links")}><SideBarItems icons={<LinkIconColor />} text={"Links"} /></div>
-
     </div >
 }
