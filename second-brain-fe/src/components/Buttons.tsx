@@ -32,7 +32,7 @@ export const Button = (props: ButtonProps) => {
         const handleClick = () => {
             if (props.onClick) props.onClick();
             if (props.showCopiedText) {
-                setCopied(true); // Hide after 2 seconds
+                setCopied(true);
                 setTimeout(() => setCopied(false), 1000);
             }
         };
