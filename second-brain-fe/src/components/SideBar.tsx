@@ -8,6 +8,8 @@ import { InstaIcon } from "../Icons/Instagram";
 import { LinkIcon, LinkIconColor } from "../Icons/LinkIcon";
 import { Stack } from "../Icons/Stack";
 import { Spotify } from "../Icons/Spotify";
+import { Link, Navigate } from "react-router-dom";
+import { LogOut, LogOutIcon } from "lucide-react";
 
 interface SideBarProps {
     onSelectType: (type: string | null) => void;
@@ -26,5 +28,8 @@ export function SideBar({ onSelectType }: SideBarProps) {
         <div onClick={() => onSelectType("instagram")}><SideBarItems icons={<InstaIcon />} text={"Instagram"} /></div>
         <div onClick={() => onSelectType("spotify")}><SideBarItems icons={<Spotify />} text={"Spotify"} /></div>
         <div onClick={() => onSelectType("links")}><SideBarItems icons={<LinkIconColor />} text={"Links"} /></div>
+        <Link to={'/'}>
+            <div className="pt-60" onClick={() => { localStorage.removeItem("token") }}><SideBarItems icons={<LogOut />} text={"LogOut"} /></div>
+        </Link>
     </div >
 }
