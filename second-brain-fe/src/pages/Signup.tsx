@@ -32,10 +32,16 @@ export function Signup() {
             <div className="flex justify-center rounded">
                 <Button fullWidth={true} size="md" variant="primary" text="SignUp" onClick={signup} />
             </div>
-            Already have an account
-            <Link to="/Signin">
-                <Button variant="primary" size={"sm"} text={"SignIn"}></Button>
-            </Link>
+            <div className="">
+                <div className="flex justify-center">
+                    Already have an account?
+                </div>
+                <div className="flex justify-center">
+                    <Link to="/Signin">
+                        <Button variant="primary" size={"md"} text={"SignIn"}></Button>
+                    </Link>
+                </div>
+            </div>
         </div>
     </div>
 }

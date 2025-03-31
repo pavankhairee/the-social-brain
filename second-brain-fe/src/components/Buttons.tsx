@@ -18,7 +18,7 @@ const variantStyle = {
 }
 
 const sizeStyle = {
-    "sm": "py-1 px-2",
+    "sm": "py-1 px-1",
     "md": "py-2 px-4",
     "lg": "py-4 px-6"
 }
@@ -40,7 +40,7 @@ export const Button = (props: ButtonProps) => {
 
         return <div className="relative inline-block">  <button onClick={handleClick}
             className={` ${variantStyle[props.variant]} ${props.fullWidth ? 'w-full flex justify-center items-center' : ''}  ${defaultStyle} ${sizeStyle[props.size]}`}>
-            <div className="pr-2">{props.startIcon}</div>{props.text}</button>
+            <div className="">{props.startIcon}</div>{props.text}</button>
             {copied && (
                 <div className="absolute top-10 left-5  bg-gray-800 text-white text-sm  px-3 py-1 rounded-md shadow-lg mt-1">
                     {props.showText}
