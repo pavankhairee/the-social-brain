@@ -74,6 +74,8 @@ export function Dashboard() {
                     </Masonry>
                 </div>
             </div>
+
+            <Button />
         </div>
     );
 }

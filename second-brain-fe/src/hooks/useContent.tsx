@@ -22,7 +22,7 @@ export function useContent() {
 
         let interval = setInterval(() => {
             getResponse();
-        }, 1000)
+        }, 4000)
         return () => clearInterval(interval);
     }, [])
     return contents;

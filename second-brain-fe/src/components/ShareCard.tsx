@@ -21,6 +21,8 @@ export function ShareCard(CardProps: CardProps) {
                 {CardProps.type === "twitter" && <XEmbed url={CardProps.link} width={250} height={250}></XEmbed>}
                 {CardProps.type === "pinterest" && <PinterestEmbed url={CardProps.link} width={250} height={250}></PinterestEmbed>}
                 {CardProps.type === "instagram" && <InstagramEmbed url={CardProps.link} width={280} height={250} ></ InstagramEmbed>}
+                {CardProps.type === "spotify" && <iframe src={CardProps.link.replace('spotify.com/', 'spotify.com/embed/').split('?')[0]} width="100%" height={380}></iframe>}
+
                 {CardProps.type === "links" && (<a className="inline-grid justify-center w-63 h-61 text-center leading-[3rem] bg-gray-300 hover:bg-gray-400 rounded-lg"
                     href={CardProps.link} target="_blank">{CardProps.title}<LinkIcon size="img"></LinkIcon></a>)}
             </div>
